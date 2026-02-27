@@ -1,0 +1,18 @@
+# Core API Framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.1
+
+# Google API Client (Gmail - The Postman)
+google-api-python-client==2.127.0
+google-auth==2.34.0
+google-auth-oauthlib==1.2.1
+
+# LangChain + Groq (The Brain - Phase 1)
+langchain==0.2.14
+langchain-core==0.2.38
+groq
+langchain-groq
+
+# Environment & Utils
+python-dotenv==1.0.1
+requests==2.32.3

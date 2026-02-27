@@ -1,0 +1,56 @@
+### Secrets / credentials
+.env
+.env.*
+*.env
+credentials.json
+token.json
+token_*.json
+tokens/
+token_outputs/
+job_cart_automation_creds.zip
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+secrets.*
+
+### Python
+*.pyc
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+dist/
+build/
+*.egg-info/
+pip-wheel-metadata/
+
+### Virtual environments
+venv/
+.venv/
+env/
+.envrc
+
+### IDEs / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+### OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+### Project-specific
+.qodo/

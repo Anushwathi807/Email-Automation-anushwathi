@@ -1,0 +1,596 @@
+{
+  "test_run": {
+    "timestamp": "2026-02-26T16:09:06.909857+00:00",
+    "project": "jobcart-email-automation",
+    "test_type": "extraction_pipeline",
+    "groq_model": "llama-3.3-70b-versatile"
+  },
+  "summary": {
+    "total_scenarios": 7,
+    "passed": 5,
+    "failed": 2,
+    "errors": 0,
+    "total_elapsed_seconds": 60.535,
+    "avg_extraction_seconds": 8.545
+  },
+  "scenarios": [
+    {
+      "scenario": "scenario_1_simple_staffing",
+      "description": "Simple staffing request with 3 named employees",
+      "thread_id": "MOCK_THREAD_001",
+      "message_count": 2,
+      "status": "success",
+      "elapsed_seconds": 2.023,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_001\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": true, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"Toronto General Hospital_October 15, 2025_Day (7am - 3pm)\", \"shift_date\": \"October 15, 2025\", \"shift_time\": \"Day (7am - 3pm)\", \"shift_hours\": 8, \"location_name\": \"Toronto General Hospital\", \"client_id\": \"Q2\", \"finalized_employees\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"T243457 Dev Ray 2262605361\", \"153257 Beant Kaur Sidhu 6475942588\"], \"all_employee_mentions\": [{\"message_id\": \"msg_001b\", \"names\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"T243457 Dev Ray 2262605361\", \"153257 Beant Kaur Sidhu 6475942588\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+        "valid_thread": true,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "2025-10-15|day (7am - 3pm)|toronto general hospital",
+              "shift_date": "2025-10-15",
+              "shift_time": "Day (7am - 3pm)",
+              "shift_hours": 8,
+              "location_name": "Toronto General Hospital",
+              "finalized_employees": [
+                "T244264 Harmandeep Singh Dhindsa 4377558679",
+                "T243457 Dev Ray 2262605361",
+                "153257 Beant Kaur Sidhu 6475942588"
+              ],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_001b",
+                  "names": [
+                    "T244264 Harmandeep Singh Dhindsa 4377558679",
+                    "T243457 Dev Ray 2262605361",
+                    "153257 Beant Kaur Sidhu 6475942588"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"2025-10-15|day (7am - 3pm)|toronto general hospital\", \"shift_date\": \"2025-10-15\", \"shift_time\": \"Day (7am - 3pm)\", \"shift_hours\": 8, \"location_name\": \"Toronto General Hospital\", \"finalized_employees\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"T243457 Dev Ray 2262605361\", \"153257 Beant Kaur Sidhu 6475942588\"], \"all_employee_mentions\": [{\"message_id\": \"msg_001b\", \"names\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"T243457 Dev Ray 2262605361\", \"153257 Beant Kaur Sidhu 6475942588\"]}], \"status\": \"\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": true,
+          "actual": true
+        },
+        "has_requirements": {
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "count": 1
+        },
+        "min_finalized_employees": {
+          "passed": true,
+          "expected_min": 3,
+          "actual": 6,
+          "names": [
+            "T244264 Harmandeep Singh Dhindsa 4377558679",
+            "T243457 Dev Ray 2262605361",
+            "153257 Beant Kaur Sidhu 6475942588",
+            "T244264 Harmandeep Singh Dhindsa 4377558679",
+            "T243457 Dev Ray 2262605361",
+            "153257 Beant Kaur Sidhu 6475942588"
+          ]
+        },
+        "expected_shift_date": {
+          "passed": true,
+          "expected": "2025-10-15",
+          "actual_dates": [
+            "2025-10-15"
+          ]
+        },
+        "expected_shift_time": {
+          "passed": true,
+          "expected": "Day",
+          "actual_times": [
+            "Day (7am - 3pm)"
+          ]
+        },
+        "expected_location_contains": {
+          "passed": true,
+          "expected_contains": "Toronto General Hospital",
+          "actual_locations": [
+            "Toronto General Hospital"
+          ]
+        }
+      },
+      "all_checks_passed": true
+    },
+    {
+      "scenario": "scenario_2_multi_requirement",
+      "description": "Multi-requirement thread with Day and Night shifts",
+      "thread_id": "MOCK_THREAD_002",
+      "message_count": 2,
+      "status": "success",
+      "elapsed_seconds": 1.206,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_002\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": false, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"TFT_Nov_1_Day\", \"shift_date\": \"November 1st, 2025\", \"shift_time\": \"7am - 3pm\", \"shift_hours\": 8, \"location_name\": \"St. Michael's Hospital\", \"client_id\": \"TFT\", \"finalized_employees\": [\"Mansi Dhanani\", \"Aaryan Rawal\"], \"all_employee_mentions\": [{\"message_id\": \"msg_002b\", \"names\": [\"Mansi Dhanani\", \"Aaryan Rawal\", \"Priya Patel\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"Need 2 workers\"}, {\"is_staffing\": true, \"req_key\": \"TFT_Nov_1_Night\", \"shift_date\": \"November 1st, 2025\", \"shift_time\": \"11pm - 7am\", \"shift_hours\": 8, \"location_name\": \"St. Michael's Hospital\", \"client_id\": \"TFT\", \"finalized_employees\": [\"Priya Patel\"], \"all_employee_mentions\": [{\"message_id\": \"msg_002b\", \"names\": [\"Mansi Dhanani\", \"Aaryan Rawal\", \"Priya Patel\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"Need 1 worker\"}]}",
+        "valid_thread": true,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "2025-11-01|11pm - 7am|st. michael's hospital",
+              "shift_date": "2025-11-01",
+              "shift_time": "11pm - 7am",
+              "shift_hours": 8,
+              "location_name": "St. Michael's Hospital",
+              "finalized_employees": [
+                "Mansi Dhanani",
+                "Aaryan Rawal",
+                "Priya Patel"
+              ],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_002b",
+                  "names": [
+                    "Mansi Dhanani",
+                    "Aaryan Rawal",
+                    "Priya Patel"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"2025-11-01|11pm - 7am|st. michael's hospital\", \"shift_date\": \"2025-11-01\", \"shift_time\": \"11pm - 7am\", \"shift_hours\": 8, \"location_name\": \"St. Michael's Hospital\", \"finalized_employees\": [\"Mansi Dhanani\", \"Aaryan Rawal\", \"Priya Patel\"], \"all_employee_mentions\": [{\"message_id\": \"msg_002b\", \"names\": [\"Mansi Dhanani\", \"Aaryan Rawal\", \"Priya Patel\"]}], \"status\": \"\"}"
+            },
+            {
+              "req_key": "2025-11-01|7am - 3pm|st. michael's hospital",
+              "shift_date": "2025-11-01",
+              "shift_time": "7am - 3pm",
+              "shift_hours": 8,
+              "location_name": "St. Michael's Hospital",
+              "finalized_employees": [
+                "Mansi Dhanani",
+                "Aaryan Rawal",
+                "Priya Patel"
+              ],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_002b",
+                  "names": [
+                    "Mansi Dhanani",
+                    "Aaryan Rawal",
+                    "Priya Patel"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"2025-11-01|7am - 3pm|st. michael's hospital\", \"shift_date\": \"2025-11-01\", \"shift_time\": \"7am - 3pm\", \"shift_hours\": 8, \"location_name\": \"St. Michael's Hospital\", \"finalized_employees\": [\"Mansi Dhanani\", \"Aaryan Rawal\", \"Priya Patel\"], \"all_employee_mentions\": [{\"message_id\": \"msg_002b\", \"names\": [\"Mansi Dhanani\", \"Aaryan Rawal\", \"Priya Patel\"]}], \"status\": \"\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": true,
+          "actual": true
+        },
+        "has_requirements": {
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "count": 2
+        },
+        "min_requirements_count": {
+          "passed": true,
+          "expected_min": 2,
+          "actual": 2
+        },
+        "expected_shift_date": {
+          "passed": true,
+          "expected": "2025-11-01",
+          "actual_dates": [
+            "2025-11-01",
+            "2025-11-01"
+          ]
+        },
+        "expected_location_contains": {
+          "passed": true,
+          "expected_contains": "St. Michael",
+          "actual_locations": [
+            "St. Michael's Hospital",
+            "St. Michael's Hospital"
+          ]
+        }
+      },
+      "all_checks_passed": true
+    },
+    {
+      "scenario": "scenario_3_cancellation",
+      "description": "Cancellation thread — status should be 'delete'",
+      "thread_id": "MOCK_THREAD_003",
+      "message_count": 3,
+      "status": "success",
+      "elapsed_seconds": 0.909,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_003\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": false, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"City_Hall_Oct_20_Day\", \"shift_date\": \"October 20, 2025\", \"shift_time\": \"Day\", \"shift_hours\": 8, \"location_name\": \"City Hall\", \"client_id\": \"Q2\", \"finalized_employees\": [], \"all_employee_mentions\": [{\"message_id\": \"msg_003b\", \"names\": [\"Rahul Sharma\", \"Neha Gupta\", \"Amit Verma\"]}], \"valid_email\": true, \"status\": \"delete\", \"raw_requirements\": \"Please schedule 3 workers for City Hall on October 20, 2025. Day shift, 8 hours.\"}]}",
+        "valid_thread": true,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "2025-10-20|day|city hall",
+              "shift_date": "2025-10-20",
+              "shift_time": "Day",
+              "shift_hours": 8,
+              "location_name": "City Hall",
+              "finalized_employees": [],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_003b",
+                  "names": [
+                    "Rahul Sharma",
+                    "Neha Gupta",
+                    "Amit Verma"
+                  ]
+                }
+              ],
+              "status": "delete",
+              "raw_requirements": "{\"req_key\": \"2025-10-20|day|city hall\", \"shift_date\": \"2025-10-20\", \"shift_time\": \"Day\", \"shift_hours\": 8, \"location_name\": \"City Hall\", \"finalized_employees\": [], \"all_employee_mentions\": [{\"message_id\": \"msg_003b\", \"names\": [\"Rahul Sharma\", \"Neha Gupta\", \"Amit Verma\"]}], \"status\": \"delete\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": true,
+          "actual": true
+        },
+        "has_requirements": {
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "count": 1
+        },
+        "expected_shift_date": {
+          "passed": true,
+          "expected": "2025-10-20",
+          "actual_dates": [
+            "2025-10-20"
+          ]
+        },
+        "expected_status": {
+          "passed": true,
+          "expected": "delete",
+          "actual_statuses": [
+            "delete"
+          ]
+        }
+      },
+      "all_checks_passed": true
+    },
+    {
+      "scenario": "scenario_4_replacement",
+      "description": "Employee replacement — Rajesh replaced by Vikram",
+      "thread_id": "MOCK_THREAD_004",
+      "message_count": 3,
+      "status": "success",
+      "elapsed_seconds": 0.965,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_004\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": false, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"VAS_Nov_5_Day\", \"shift_date\": \"November 5, 2025\", \"shift_time\": \"Day\", \"shift_hours\": 8, \"location_name\": \"warehouse\", \"client_id\": \"VAS\", \"finalized_employees\": [\"Vikram Singh\", \"Simran Kaur\"], \"all_employee_mentions\": [{\"message_id\": \"msg_004b\", \"names\": [\"Rajesh Kumar\", \"Simran Kaur\"]}, {\"message_id\": \"msg_004c\", \"names\": [\"Rajesh Kumar\", \"Vikram Singh\", \"Simran Kaur\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+        "valid_thread": true,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "2025-11-05|day|warehouse",
+              "shift_date": "2025-11-05",
+              "shift_time": "Day",
+              "shift_hours": 8,
+              "location_name": "warehouse",
+              "finalized_employees": [
+                "Rajesh Kumar",
+                "Vikram Singh",
+                "Simran Kaur"
+              ],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_004b",
+                  "names": [
+                    "Rajesh Kumar",
+                    "Simran Kaur"
+                  ]
+                },
+                {
+                  "message_id": "msg_004c",
+                  "names": [
+                    "Rajesh Kumar",
+                    "Vikram Singh",
+                    "Simran Kaur"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"2025-11-05|day|warehouse\", \"shift_date\": \"2025-11-05\", \"shift_time\": \"Day\", \"shift_hours\": 8, \"location_name\": \"warehouse\", \"finalized_employees\": [\"Rajesh Kumar\", \"Vikram Singh\", \"Simran Kaur\"], \"all_employee_mentions\": [{\"message_id\": \"msg_004b\", \"names\": [\"Rajesh Kumar\", \"Simran Kaur\"]}, {\"message_id\": \"msg_004c\", \"names\": [\"Rajesh Kumar\", \"Vikram Singh\", \"Simran Kaur\"]}], \"status\": \"\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": true,
+          "actual": true
+        },
+        "has_requirements": {
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "count": 1
+        },
+        "expected_shift_date": {
+          "passed": true,
+          "expected": "2025-11-05",
+          "actual_dates": [
+            "2025-11-05"
+          ]
+        },
+        "expected_finalized_must_include": {
+          "passed": true,
+          "expected": [
+            "Vikram Singh",
+            "Simran Kaur"
+          ],
+          "missing": [],
+          "actual_employees": [
+            "Rajesh Kumar",
+            "Vikram Singh",
+            "Simran Kaur",
+            "Vikram Singh",
+            "Simran Kaur"
+          ]
+        },
+        "expected_finalized_must_exclude": {
+          "passed": false,
+          "expected_excluded": [
+            "Rajesh Kumar"
+          ],
+          "wrongly_included": [
+            "Rajesh Kumar"
+          ],
+          "actual_employees": [
+            "Rajesh Kumar",
+            "Vikram Singh",
+            "Simran Kaur",
+            "Vikram Singh",
+            "Simran Kaur"
+          ]
+        }
+      },
+      "all_checks_passed": false
+    },
+    {
+      "scenario": "scenario_5_non_staffing",
+      "description": "Non-staffing email (late report) — should be invalid",
+      "thread_id": "MOCK_THREAD_005",
+      "message_count": 1,
+      "status": "success",
+      "elapsed_seconds": 9.86,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_005\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": false, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"20251010_downtown\", \"shift_date\": \"Oct 10\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"downtown\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [{\"message_id\": \"msg_005a\", \"names\": [\"John Doe\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+        "valid_thread": false,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "||",
+              "shift_date": "",
+              "shift_time": "",
+              "shift_hours": 8,
+              "location_name": "",
+              "finalized_employees": [],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_005a",
+                  "names": [
+                    "John Doe"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [{\"message_id\": \"msg_005a\", \"names\": [\"John Doe\"]}], \"status\": \"\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": false,
+          "actual": false
+        }
+      },
+      "all_checks_passed": true
+    },
+    {
+      "scenario": "scenario_6_ids_and_phones",
+      "description": "IDs and phone numbers must be preserved correctly",
+      "thread_id": "MOCK_THREAD_006",
+      "message_count": 2,
+      "status": "success",
+      "elapsed_seconds": 15.37,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_006\", \"shift_date\": \"2025-12-01\", \"shift_time\": \"12:00-20:00\", \"shift_hours\": 8, \"location_name\": \"Convention Centre\", \"client_id\": \"SQ\", \"finalized_employees\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"Riddhi Arora 2262601134\", \"153257 Beant Kaur Sidhu 6475942588\", \"T243457 Dev Ray 2262605361\"], \"all_employee_mentions\": [{\"message_id\": \"msg_006b\", \"names\": [\"Harmandeep Singh Dhindsa\", \"Riddhi Arora\", \"Beant Kaur Sidhu\", \"Dev Ray\"]}], \"valid_thread\": true, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"SQ_Convention Centre_2025-12-01_12:00-20:00\", \"shift_date\": \"2025-12-01\", \"shift_time\": \"12:00-20:00\", \"shift_hours\": 8, \"location_name\": \"Convention Centre\", \"client_id\": \"SQ\", \"finalized_employees\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"Riddhi Arora 2262601134\", \"153257 Beant Kaur Sidhu 6475942588\", \"T243457 Dev Ray 2262605361\"], \"all_employee_mentions\": [{\"message_id\": \"msg_006b\", \"names\": [\"Harmandeep Singh Dhindsa\", \"Riddhi Arora\", \"Beant Kaur Sidhu\", \"Dev Ray\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+        "valid_thread": true,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "2025-12-01|12:00-20:00|convention centre",
+              "shift_date": "2025-12-01",
+              "shift_time": "12:00-20:00",
+              "shift_hours": 8,
+              "location_name": "Convention Centre",
+              "finalized_employees": [
+                "T244264 Harmandeep Singh Dhindsa 4377558679",
+                "Riddhi Arora 2262601134",
+                "153257 Beant Kaur Sidhu 6475942588",
+                "T243457 Dev Ray 2262605361"
+              ],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_006b",
+                  "names": [
+                    "Harmandeep Singh Dhindsa",
+                    "Riddhi Arora",
+                    "Beant Kaur Sidhu",
+                    "Dev Ray"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"2025-12-01|12:00-20:00|convention centre\", \"shift_date\": \"2025-12-01\", \"shift_time\": \"12:00-20:00\", \"shift_hours\": 8, \"location_name\": \"Convention Centre\", \"finalized_employees\": [\"T244264 Harmandeep Singh Dhindsa 4377558679\", \"Riddhi Arora 2262601134\", \"153257 Beant Kaur Sidhu 6475942588\", \"T243457 Dev Ray 2262605361\"], \"all_employee_mentions\": [{\"message_id\": \"msg_006b\", \"names\": [\"Harmandeep Singh Dhindsa\", \"Riddhi Arora\", \"Beant Kaur Sidhu\", \"Dev Ray\"]}], \"status\": \"\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": true,
+          "actual": true
+        },
+        "has_requirements": {
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "count": 1
+        },
+        "min_finalized_employees": {
+          "passed": true,
+          "expected_min": 4,
+          "actual": 8,
+          "names": [
+            "T244264 Harmandeep Singh Dhindsa 4377558679",
+            "Riddhi Arora 2262601134",
+            "153257 Beant Kaur Sidhu 6475942588",
+            "T243457 Dev Ray 2262605361",
+            "T244264 Harmandeep Singh Dhindsa 4377558679",
+            "Riddhi Arora 2262601134",
+            "153257 Beant Kaur Sidhu 6475942588",
+            "T243457 Dev Ray 2262605361"
+          ]
+        },
+        "expected_shift_date": {
+          "passed": true,
+          "expected": "2025-12-01",
+          "actual_dates": [
+            "2025-12-01"
+          ]
+        },
+        "expected_shift_time": {
+          "passed": false,
+          "expected": "Afternoon",
+          "actual_times": [
+            "12:00-20:00"
+          ]
+        },
+        "expected_location_contains": {
+          "passed": true,
+          "expected_contains": "Convention Centre",
+          "actual_locations": [
+            "Convention Centre"
+          ]
+        }
+      },
+      "all_checks_passed": false
+    },
+    {
+      "scenario": "scenario_7_supervisor_exclusion",
+      "description": "Supervisor 'Michael Johnson' must NOT appear in finalized_employees",
+      "thread_id": "MOCK_THREAD_007",
+      "message_count": 2,
+      "status": "success",
+      "elapsed_seconds": 29.479,
+      "extraction_result": {
+        "raw_output": "{\"threadId\": \"MOCK_THREAD_007\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": false, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"Industrial_Park_Oct_25_Day\", \"shift_date\": \"October 25, 2025\", \"shift_time\": \"Day\", \"shift_hours\": 8, \"location_name\": \"Industrial Park\", \"client_id\": \"Q2\", \"finalized_employees\": [\"Anika Patel\", \"Rajan Mehta\"], \"all_employee_mentions\": [{\"message_id\": \"msg_007a\", \"names\": []}, {\"message_id\": \"msg_007b\", \"names\": [\"Anika Patel\", \"Rajan Mehta\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+        "valid_thread": true,
+        "parsed_output": {
+          "requirements": [
+            {
+              "req_key": "2025-10-25|day|industrial park",
+              "shift_date": "2025-10-25",
+              "shift_time": "Day",
+              "shift_hours": 8,
+              "location_name": "Industrial Park",
+              "finalized_employees": [
+                "Anika Patel",
+                "Rajan Mehta"
+              ],
+              "all_employee_mentions": [
+                {
+                  "message_id": "msg_007a",
+                  "names": []
+                },
+                {
+                  "message_id": "msg_007b",
+                  "names": [
+                    "Anika Patel",
+                    "Rajan Mehta"
+                  ]
+                }
+              ],
+              "status": "",
+              "raw_requirements": "{\"req_key\": \"2025-10-25|day|industrial park\", \"shift_date\": \"2025-10-25\", \"shift_time\": \"Day\", \"shift_hours\": 8, \"location_name\": \"Industrial Park\", \"finalized_employees\": [\"Anika Patel\", \"Rajan Mehta\"], \"all_employee_mentions\": [{\"message_id\": \"msg_007a\", \"names\": []}, {\"message_id\": \"msg_007b\", \"names\": [\"Anika Patel\", \"Rajan Mehta\"]}], \"status\": \"\"}"
+            }
+          ]
+        }
+      },
+      "accuracy_checks": {
+        "valid_thread": {
+          "passed": true,
+          "expected": true,
+          "actual": true
+        },
+        "has_requirements": {
+          "passed": true,
+          "expected": true,
+          "actual": true,
+          "count": 1
+        },
+        "min_finalized_employees": {
+          "passed": true,
+          "expected_min": 2,
+          "actual": 4,
+          "names": [
+            "Anika Patel",
+            "Rajan Mehta",
+            "Anika Patel",
+            "Rajan Mehta"
+          ]
+        },
+        "expected_shift_date": {
+          "passed": true,
+          "expected": "2025-10-25",
+          "actual_dates": [
+            "2025-10-25"
+          ]
+        },
+        "expected_location_contains": {
+          "passed": true,
+          "expected_contains": "Industrial Park",
+          "actual_locations": [
+            "Industrial Park"
+          ]
+        },
+        "expected_finalized_must_exclude": {
+          "passed": true,
+          "expected_excluded": [
+            "Michael Johnson"
+          ],
+          "wrongly_included": [],
+          "actual_employees": [
+            "Anika Patel",
+            "Rajan Mehta",
+            "Anika Patel",
+            "Rajan Mehta"
+          ]
+        }
+      },
+      "all_checks_passed": true
+    }
+  ]
+}
