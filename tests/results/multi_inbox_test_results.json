@@ -1,0 +1,163 @@
+[
+  {
+    "account": "anushwathiranganathan@gmail.com",
+    "thread_id": "19ca4b32d553bb42",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca4b32d553bb42\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": null, \"all_employee_mentions\": null, \"valid_thread\": false, \"status\": \"\", \"Requirements\": []}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "account": "anushwathiranganathan@gmail.com",
+    "thread_id": "19ca32166b31b1eb",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca32166b31b1eb\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": null, \"all_employee_mentions\": null, \"valid_thread\": false, \"status\": \"\", \"Requirements\": []}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "account": "anushwathiranganathan@gmail.com",
+    "thread_id": "19ca31e8329b5ce1",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca31e8329b5ce1\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": null, \"all_employee_mentions\": null, \"valid_thread\": false, \"status\": \"\", \"Requirements\": []}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "account": "anushwathiranganathan@gmail.com",
+    "thread_id": "19ca2b118b0f684b",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca2b118b0f684b\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": false, \"status\": \"\", \"Requirements\": [{\"is_staffing\": false, \"req_key\": \"\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_email\": false, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "account": "anushwathiranganathan@gmail.com",
+    "thread_id": "19ca26301dcd6fd4",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca26301dcd6fd4\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": null, \"all_employee_mentions\": null, \"valid_thread\": false, \"status\": \"\", \"Requirements\": []}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "account": "anushwathiranganathan@gmail.com",
+    "thread_id": "19ca24057e0c9580",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca24057e0c9580\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": null, \"all_employee_mentions\": null, \"valid_thread\": false, \"status\": \"\", \"Requirements\": []}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "account": "anushwathircps10@gmail.com",
+    "thread_id": "19ca51a0a5abf227",
+    "extraction": {
+      "raw_output": "{\"threadId\": \"19ca51a0a5abf227\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": null, \"all_employee_mentions\": null, \"valid_thread\": false, \"status\": \"\", \"Requirements\": []}",
+      "valid_thread": false,
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "||",
+            "shift_date": "",
+            "shift_time": "",
+            "shift_hours": 8,
+            "location_name": "",
+            "finalized_employees": [],
+            "all_employee_mentions": [],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"||\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"status\": \"\"}"
+          }
+        ]
+      }
+    }
+  }
+]
