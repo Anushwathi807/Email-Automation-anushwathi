@@ -259,5 +259,155 @@
       }
     },
     "processed_at": "2026-03-02T15:30:14.814225+00:00"
+  },
+  {
+    "conversation": "elsysayla@gmail.com <-> anushwathiranganathan@gmail.com",
+    "thread_id": "19caeee5746e9838",
+    "message_count": 6,
+    "valid_thread": true,
+    "scraped_chat_history": [
+      {
+        "from": "elsys ayla <elsysayla@gmail.com>",
+        "date": "Mon, 2 Mar 2026 19:53:09 +0530",
+        "message_body": "\"Hi Anu, you have been allotted a shift at the Downtown Clinic tomorrow\nfrom 9:00 AM to 5:00 PM. Please confirm.\""
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:01:34 +0530",
+        "message_body": "Hi, I received the allotment. I can confirm my availability for the shift\nat the Downtown Clinic tomorrow from 9:00 AM to 5:00 PM. Thank you!"
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:19:16 +0530",
+        "message_body": "Hi, I received the allotment. I can confirm my availability for the shift\nat the Downtown Clinic tomorrow from 9:00 AM to 5:00 PM. Thank you!\n\nOn Mon, Mar 2, 2026 at 8:01 PM Anushwathi Ranganathan <\nanushwathiranganathan@gmail.com> wrote:"
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:49:16 +0530",
+        "message_body": "Hi, I received the allotment. I can confirm my availability for the shift\nat the Downtown Clinic tomorrow from 9:00 AM to 5:00 PM. Thank you!\n\nOn Mon, Mar 2, 2026 at 8:19 PM Anushwathi Ranganathan <\nanushwathiranganathan@gmail.com> wrote:"
+      },
+      {
+        "from": "elsys ayla <elsysayla@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:59:24 +0530",
+        "message_body": "Hi ANU, we have an upcoming shift that needs coverage. You are scheduled\nfor the Robotics Testing Lab on Thursday, March 5th, 2026, from 10:00 AM to\n6:00 PM. Please review the allocation and reply to confirm your\navailability.\n\nOn Mon, Mar 2, 2026 at 8:49 PM Anushwathi Ranganathan <\nanushwathiranganathan@gmail.com> wrote:"
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:59:50 +0530",
+        "message_body": "Hello, I have received the shift details. I can confirm my availability for\nthe Robotics Testing Lab on March 5th from 10:00 AM to 6:00 PM. I will be\nthere on time."
+      }
+    ],
+    "extracted": {
+      "raw_output": "{\"threadId\": \"19caeee5746e9838\", \"shift_date\": \"\", \"shift_time\": \"\", \"shift_hours\": 8, \"location_name\": \"\", \"client_id\": \"\", \"finalized_employees\": [], \"all_employee_mentions\": [], \"valid_thread\": true, \"status\": \"\", \"Requirements\": [{\"is_staffing\": true, \"req_key\": \"2026-03-03_09:00-17:00_Downtown Clinic\", \"shift_date\": \"2026-03-03\", \"shift_time\": \"09:00-17:00\", \"shift_hours\": 8, \"location_name\": \"Downtown Clinic\", \"client_id\": \"\", \"finalized_employees\": [\"Anu\"], \"all_employee_mentions\": [{\"message_id\": \"19caeee76d1e38f2\", \"names\": [\"Anu\"]}, {\"message_id\": \"19caef65f01de7f8\", \"names\": [\"Anu\"]}, {\"message_id\": \"19caf06934473c87\", \"names\": [\"Anu\"]}, {\"message_id\": \"19caf22068da7800\", \"names\": [\"Anu\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}, {\"is_staffing\": true, \"req_key\": \"2026-03-05_10:00-18:00_Robotics Testing Lab\", \"shift_date\": \"2026-03-05\", \"shift_time\": \"10:00-18:00\", \"shift_hours\": 8, \"location_name\": \"Robotics Testing Lab\", \"client_id\": \"\", \"finalized_employees\": [\"Anu\"], \"all_employee_mentions\": [{\"message_id\": \"19caf2b1e7569b82\", \"names\": [\"ANU\"]}, {\"message_id\": \"19caf2bb53495e65\", \"names\": [\"Anu\"]}], \"valid_email\": true, \"status\": \"\", \"raw_requirements\": \"\"}]}",
+      "parsed_output": {
+        "requirements": [
+          {
+            "req_key": "2026-03-03|09:00-17:00|downtown clinic",
+            "shift_date": "2026-03-03",
+            "shift_time": "09:00-17:00",
+            "shift_hours": 8,
+            "location_name": "Downtown Clinic",
+            "finalized_employees": [],
+            "all_employee_mentions": [
+              {
+                "message_id": "19caeee76d1e38f2",
+                "names": [
+                  "Anu"
+                ]
+              },
+              {
+                "message_id": "19caef65f01de7f8",
+                "names": []
+              },
+              {
+                "message_id": "19caf06934473c87",
+                "names": [
+                  "Anu"
+                ]
+              },
+              {
+                "message_id": "19caf22068da7800",
+                "names": [
+                  "Anu"
+                ]
+              }
+            ],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"2026-03-03|09:00-17:00|downtown clinic\", \"shift_date\": \"2026-03-03\", \"shift_time\": \"09:00-17:00\", \"shift_hours\": 8, \"location_name\": \"Downtown Clinic\", \"finalized_employees\": [], \"all_employee_mentions\": [{\"message_id\": \"19caeee76d1e38f2\", \"names\": [\"Anu\"]}, {\"message_id\": \"19caef65f01de7f8\", \"names\": []}, {\"message_id\": \"19caf06934473c87\", \"names\": [\"Anu\"]}, {\"message_id\": \"19caf22068da7800\", \"names\": [\"Anu\"]}], \"status\": \"\"}"
+          },
+          {
+            "req_key": "2026-03-05|10:00-18:00|robotics testing lab",
+            "shift_date": "2026-03-05",
+            "shift_time": "10:00-18:00",
+            "shift_hours": 8,
+            "location_name": "Robotics Testing Lab",
+            "finalized_employees": [],
+            "all_employee_mentions": [
+              {
+                "message_id": "19caf2b1e7569b82",
+                "names": [
+                  "Anu"
+                ]
+              },
+              {
+                "message_id": "19caf2bb53495e65",
+                "names": []
+              }
+            ],
+            "status": "",
+            "raw_requirements": "{\"req_key\": \"2026-03-05|10:00-18:00|robotics testing lab\", \"shift_date\": \"2026-03-05\", \"shift_time\": \"10:00-18:00\", \"shift_hours\": 8, \"location_name\": \"Robotics Testing Lab\", \"finalized_employees\": [], \"all_employee_mentions\": [{\"message_id\": \"19caf2b1e7569b82\", \"names\": [\"Anu\"]}, {\"message_id\": \"19caf2bb53495e65\", \"names\": []}], \"status\": \"\"}"
+          }
+        ]
+      }
+    },
+    "processed_at": "2026-03-02T15:49:43.717424+00:00"
+  },
+  {
+    "conversation": "elsysayla@gmail.com <-> anushwathiranganathan@gmail.com",
+    "thread_id": "19caeee5746e9838",
+    "message_count": 7,
+    "valid_thread": false,
+    "scraped_chat_history": [
+      {
+        "from": "elsys ayla <elsysayla@gmail.com>",
+        "date": "Mon, 2 Mar 2026 19:53:09 +0530",
+        "message_body": "\"Hi Anu, you have been allotted a shift at the Downtown Clinic tomorrow\nfrom 9:00 AM to 5:00 PM. Please confirm.\""
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:01:34 +0530",
+        "message_body": "Hi, I received the allotment. I can confirm my availability for the shift\nat the Downtown Clinic tomorrow from 9:00 AM to 5:00 PM. Thank you!"
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:19:16 +0530",
+        "message_body": "Hi, I received the allotment. I can confirm my availability for the shift\nat the Downtown Clinic tomorrow from 9:00 AM to 5:00 PM. Thank you!\n\nOn Mon, Mar 2, 2026 at 8:01 PM Anushwathi Ranganathan <\nanushwathiranganathan@gmail.com> wrote:"
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:49:16 +0530",
+        "message_body": "Hi, I received the allotment. I can confirm my availability for the shift\nat the Downtown Clinic tomorrow from 9:00 AM to 5:00 PM. Thank you!\n\nOn Mon, Mar 2, 2026 at 8:19 PM Anushwathi Ranganathan <\nanushwathiranganathan@gmail.com> wrote:"
+      },
+      {
+        "from": "elsys ayla <elsysayla@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:59:24 +0530",
+        "message_body": "Hi ANU, we have an upcoming shift that needs coverage. You are scheduled\nfor the Robotics Testing Lab on Thursday, March 5th, 2026, from 10:00 AM to\n6:00 PM. Please review the allocation and reply to confirm your\navailability.\n\nOn Mon, Mar 2, 2026 at 8:49 PM Anushwathi Ranganathan <\nanushwathiranganathan@gmail.com> wrote:"
+      },
+      {
+        "from": "Anushwathi Ranganathan <anushwathiranganathan@gmail.com>",
+        "date": "Mon, 2 Mar 2026 20:59:50 +0530",
+        "message_body": "Hello, I have received the shift details. I can confirm my availability for\nthe Robotics Testing Lab on March 5th from 10:00 AM to 6:00 PM. I will be\nthere on time."
+      },
+      {
+        "from": "elsys ayla <elsysayla@gmail.com>",
+        "date": "Mon, 2 Mar 2026 21:20:22 +0530",
+        "message_body": "Hi ANU, we have an upcoming shift that needs coverage. You are scheduled\nfor the Robotics Testing Lab on Thursday, March 5th, 2026, from 10:00 AM to\n6:00 PM. Please review the allocation and reply to confirm your\navailability."
+      }
+    ],
+    "extracted": {
+      "raw_output": "Invalid argument provided to Gemini: 400 API key not valid. Please pass a valid API key. [reason: \"API_KEY_INVALID\"\ndomain: \"googleapis.com\"\nmetadata {\n  key: \"service\"\n  value: \"generativelanguage.googleapis.com\"\n}\n, locale: \"en-US\"\nmessage: \"API key not valid. Please pass a valid API key.\"\n]",
+      "parsed_output": {}
+    },
+    "processed_at": "2026-03-02T16:34:20.998181+00:00"
   }
 ]

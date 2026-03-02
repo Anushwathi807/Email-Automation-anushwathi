@@ -1,7 +1,8 @@
+# agent/llm.py
 import os
 import logging
 from dotenv import load_dotenv
-from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 from functools import lru_cache
 
 # ────────────────────────────────
@@ -18,38 +19,28 @@ logger.setLevel(logging.INFO)
 # 🔐 Environment Setup
 # ────────────────────────────────
 load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-if not GROQ_API_KEY:
-    logger.warning("Missing GROQ_API_KEY in .env file")
-
-# ────────────────────────────────
-# 🧠 Model Profiles (UPDATED)
-# ────────────────────────────────
-# We are using the newest supported Groq models
-EXTRACTION_MODEL = "llama-3.3-70b-versatile"  # Heavy model: High reasoning for complex JSON extraction
-CLEANING_MODEL = "llama-3.1-8b-instant"       # Light model: Fast and cheap for stripping email signatures
+if not GEMINI_API_KEY:
+    logger.warning("Missing GEMINI_API_KEY in .env file")
 
 # ────────────────────────────────
 # 🤖 LLM Singleton
 # ────────────────────────────────
-@lru_cache(maxsize=2)
-def get_llm(task_type="extraction", temperature=0.0):
+@lru_cache(maxsize=1)
+def get_llm():
     """
-    Lazily load the Groq model once per task type and cache it globally.
-    task_type: 'extraction' (default) or 'cleaning'
+    Lazily load the Native Google Gemini model once and cache it globally.
     """
-    if not GROQ_API_KEY:
-        raise RuntimeError("Missing GROQ_API_KEY in .env file")
+    if not GEMINI_API_KEY:
+        raise RuntimeError("Missing GEMINI_API_KEY in .env file")
 
-    # Select the right model based on the job
-    model_name = CLEANING_MODEL if task_type == "cleaning" else EXTRACTION_MODEL
-
-    llm = ChatGroq(
-        temperature=temperature,
-        model_name=model_name,
-        groq_api_key=GROQ_API_KEY,
+    # Initialize the official Google Generative AI integration
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.0-flash",
+        temperature=0.3,
         max_tokens=8192,
+        google_api_key=GEMINI_API_KEY
     )
-    logger.info(f"✅ Groq model initialized for {task_type}: {model_name}")
+    logger.info("✅ Native Google Gemini model initialized (gemini-2.0-flash)")
     return llm

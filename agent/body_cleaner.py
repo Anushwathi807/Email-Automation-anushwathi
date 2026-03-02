@@ -145,7 +145,7 @@ async def populate_parsed_body_for_thread_messages_async(messages: List[Dict[str
     logger.info(f"🧹 Starting parallel cleaning for {len(messages)} messages (Max concurrent: {max_concurrent})...")
     
     # Grab the fast, cheap model for cleaning
-    llm = get_llm(task_type="cleaning")
+    llm = get_llm()
     semaphore = asyncio.Semaphore(max_concurrent)
 
     # Create and run all tasks simultaneously

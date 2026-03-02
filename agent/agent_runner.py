@@ -13,7 +13,7 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 # --- NEW: Pydantic for strict JSON Schema enforcement ---
 from pydantic import BaseModel, Field
 
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from .llm import get_llm
 from .body_cleaner import populate_parsed_body_for_thread_messages_async
 
@@ -308,8 +308,8 @@ class Requirement(BaseModel):
     shift_hours: Optional[int] = Field(default=8)
     location_name: Optional[str] = Field(default="")
     client_id: Optional[str] = Field(default="")
-    finalized_employees: Optional[List[str]] = Field(default_factory=list)
-    all_employee_mentions: Optional[List[EmployeeMention]] = Field(default_factory=list)
+    finalized_employees: Optional[List[str]] = Field(default=None)
+    all_employee_mentions: Optional[List[EmployeeMention]] = Field(default=None)
     valid_email: Optional[bool] = Field(default=False)
     status: Optional[str] = Field(default="")
     raw_requirements: Optional[str] = Field(default="")
@@ -321,11 +321,11 @@ class ExtractionResult(BaseModel):
     shift_hours: Optional[int] = Field(default=8)
     location_name: Optional[str] = Field(default="")
     client_id: Optional[str] = Field(default="")
-    finalized_employees: Optional[List[str]] = Field(default_factory=list)
-    all_employee_mentions: Optional[List[EmployeeMention]] = Field(default_factory=list)
+    finalized_employees: Optional[List[str]] = Field(default=None)
+    all_employee_mentions: Optional[List[EmployeeMention]] = Field(default=None)
     valid_thread: Optional[bool] = Field(default=False)
     status: Optional[str] = Field(default="")
-    Requirements: Optional[List[Requirement]] = Field(default_factory=list)
+    Requirements: Optional[List[Requirement]] = Field(default=None)
 
 # ---------------------------------------------------------------------------
 # Precompiled prompt & chain
@@ -428,15 +428,38 @@ Rules:
 )
 
 # ---------------------------------------------------------------------------
-# 🔗 UPDATED: Structured LLM Chain
+# 🔗 UPDATED: LLM Chain (plain text output, parsed manually)
 # ---------------------------------------------------------------------------
 LLM_INSTANCE = get_llm()
-STRUCTURED_LLM = LLM_INSTANCE.with_structured_output(ExtractionResult)
-CHAIN = PROMPT_TEMPLATE | STRUCTURED_LLM
+CHAIN = PROMPT_TEMPLATE | LLM_INSTANCE
 
 # ---------------------------------------------------------------------------
-# UPDATED: Async Main runner with Tenacity Retries & Pydantic Parsing
+# UPDATED: Async Main runner with Tenacity Retries & Manual JSON Parsing
 # ---------------------------------------------------------------------------
+
+def _extract_json_from_response(text: str) -> dict:
+    """Extract JSON object from LLM response text, stripping markdown fences if present."""
+    s = (text or "").strip()
+    # Strip markdown code fences
+    if s.startswith("```"):
+        s = s.split("\n", 1)[1] if "\n" in s else ""
+        end = s.rfind("```")
+        if end != -1:
+            s = s[:end]
+        s = s.strip()
+    # Try to find JSON object boundaries
+    start = s.find("{")
+    end = s.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        s = s[start:end + 1]
+    try:
+        return json.loads(s)
+    except json.JSONDecodeError:
+        # Attempt to fix common issues like trailing commas
+        cleaned = re.sub(r",\s*([}\]])", r"\1", s)
+        return json.loads(cleaned)
+
+
 @retry(
     stop=stop_after_attempt(3), 
     wait=wait_exponential(multiplier=1, min=2, max=10),
@@ -445,7 +468,7 @@ CHAIN = PROMPT_TEMPLATE | STRUCTURED_LLM
 async def run_agent_step_async(email_thread: Dict[str, Any]) -> Dict[str, Any]:
     """
     Run a structured extraction pass asynchronously.
-    Wrapped with tenacity @retry to auto-recover from Groq API hiccups.
+    Wrapped with tenacity @retry to auto-recover from API hiccups.
     """
     thread_id = str(email_thread.get("threadId", ""))
     logger.info(f"Processing thread {thread_id} ...")
@@ -458,11 +481,12 @@ async def run_agent_step_async(email_thread: Dict[str, Any]) -> Dict[str, Any]:
 
     thread_text = _format_thread_for_prompt(email_thread)
 
-    # 2. Extract strictly validated JSON via Pydantic
+    # 2. Call LLM and parse the JSON response manually
     response = await CHAIN.ainvoke({"thread_text": thread_text, "thread_id": thread_id})
+    response_text = getattr(response, "content", str(response))
 
-    # 3. Convert the Pydantic object straight back into a dictionary! No string parsing needed!
-    parsed = response.model_dump()
+    # 3. Parse JSON from the response
+    parsed = _extract_json_from_response(response_text)
     raw_output = json.dumps(parsed, ensure_ascii=False)
 
     # Minimal normalization on parsed_output (if any)

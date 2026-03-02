@@ -1,0 +1,9 @@
+[
+  {
+    "thread_id": "19caeee5746e9838",
+    "processing_time_seconds": 4.476,
+    "messages_in_thread": 7,
+    "llm_status": "failed",
+    "timestamp": "2026-03-02T16:34:20.998227+00:00"
+  }
+]
